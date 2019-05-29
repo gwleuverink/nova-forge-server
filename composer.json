@@ -1,0 +1,31 @@
+{
+    "name": "leuverink/nova-forge-server",
+    "description": "A Laravel Nova tool.",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0",
+        "laravel/nova": "*",
+        "themsaid/forge-sdk": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Leuverink\\ForgeServer\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Leuverink\\ForgeServer\\ToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
