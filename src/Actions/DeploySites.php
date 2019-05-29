@@ -31,27 +31,4 @@ class DeploySites {
             $this->forge->deploySite($serverId, $site, $wait);
         });
     }
-
-    /**
-     * Fetch all sites from Forge.
-     *
-     * @param string $serverId
-     * @return array
-     */
-    private function fetchSites(string $serverId) : array
-    {
-        return $this->forge->sites($serverId);
-    }
-
-    /**
-     * Fetch all favicons from storage or scrape from the domain
-     *
-     * @param array $sites
-     * @return array
-     */
-    private function fetchFavicons(array $sites) : array
-    {
-        // TODO: Implement this method.
-        return [];
-    }
 }

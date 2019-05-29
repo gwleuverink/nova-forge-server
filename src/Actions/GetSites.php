@@ -13,9 +13,16 @@ class GetSites {
      */
     public $forge;
 
-    public function __construct(Forge $forge)
+    /**
+     * The GetFavicons Action
+     * 
+     * @var GetFavicons
+     */
+
+    public function __construct(Forge $forge, GetFavicons $getFavicons)
     {
         $this->forge = $forge;
+        $this->getFavicons = $getFavicons;
     }
 
     /**
@@ -27,32 +34,10 @@ class GetSites {
      */
     public function execute(string $serverId)
     {
-        $sites = $this->fetchSites($serverId);
-        $favicons = $this->fetchFavicons($sites);
+        $sites = $this->forge->sites($serverId);
+        $favicons = $this->getFavicons->execute($sites);
+        // TODO: Merge favicons with site response
 
         return $sites;
-    }
-
-    /**
-     * Fetch all sites from Forge.
-     *
-     * @param string $serverId
-     * @return array
-     */
-    private function fetchSites(string $serverId) : array
-    {
-        return $this->forge->sites($serverId);
-    }
-
-    /**
-     * Fetch all favicons from storage or scrape from the domain
-     *
-     * @param array $sites
-     * @return array
-     */
-    private function fetchFavicons(array $sites) : array
-    {
-        // TODO: Implement this method.
-        return [];
     }
 }
